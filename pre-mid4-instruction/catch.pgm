@@ -66,5 +66,15 @@ cat ps.txt
 echo "12.grep 搭配正則表達"
 grep ^[e,i] catch.pgm | grep [\"]$ | grep .shell. | grep [a-z] | grep [2]
 
+echo "13.function"
+function function_name ()
+{
+
+    var=$1
+    var2=$2
+    echo "$var $var2 $0"
+}
+#call function
+function_name arg1 arg2
 
 
