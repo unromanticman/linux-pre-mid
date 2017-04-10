@@ -1,0 +1,13 @@
+#!/bin/sh
+
+	x1=`openssl md5 xx1 | cut -c 10-15 `	
+	for i in 2 3 4
+        do
+                        x=`openssl md5 xx$i | cut -c 10-15`
+                        if [ "$x1" = "$x"  ]
+                        then
+                                echo "xx$i" = "xx1"
+                        fi
+        done
+exit 0
+ 
