@@ -1,0 +1,70 @@
+#!/bin/sh
+
+echo "1.get size by shell" 
+
+cat /proc/cpuinfo | grep "cache size" | head -1 | cut -d " " -f 3-4
+         
+echo "2.get shell path"
+echo $SHELL
+        
+echo "3.get shell ps (id)"
+echo $$      
+      
+echo "4.generate random"
+echo "RANDOM IS: $RANDOM "
+    
+    
+echo "5.get arg 0  and arg1 and arg 2"
+
+if [ "$1" = "" ] || [ "$2" = "" ]
+then
+echo "arg 0 is $0 and  arg1 or arg2 missing"
+else
+echo "arg 0 is $0 , arg 1 is $1 ,arg 2 is $2"
+fi
+
+echo "6.get text's  md5"
+echo `openssl md5 text  | cut -d " " -f 2`
+echo `openssl md5 text | cut -d " " -f 2` > text.md5
+
+echo "7.取得含有a的檔名 for loop by 萬用字元"
+
+for file in $(ls *a*.sh)
+	do
+		echo $file
+done
+
+echo "8.使用for搭配seq"
+for i in $(seq 1 5)
+	do
+		echo $i
+done
+
+echo "9.while測試 輸入密碼 123 "
+key=""
+read key
+while [ "$key" != "123" ] 
+	do
+	echo "密碼錯誤再輸入一次"
+	read key
+done
+
+echo "10.grep & 錯誤處理 找有kk3檔案"
+for file in * 
+ do
+  if grep -q kk3 $file 2>/dev/null
+	then
+		echo $file
+  fi
+done
+
+echo "11.pipe管線 & sort排序 & uniq過濾重覆"
+ps | uniq | sort > ps.txt
+cat ps.txt
+
+
+echo "12.grep 搭配正則表達"
+grep ^[e,i] catch.pgm | grep [\"]$ | grep .shell. | grep [a-z] | grep [2]
+
+
+

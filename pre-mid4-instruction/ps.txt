@@ -1,0 +1,5 @@
+  PID TTY           TIME CMD
+58436 ttys000    0:00.19 -bash
+59066 ttys000    0:00.01 /bin/sh ./catch.pgm
+59092 ttys000    0:00.00 uniq
+59093 ttys000    0:00.00 sort
